@@ -131,7 +131,16 @@ def main():
             elif(direccion == 's'):
                 y = y-1
         elif(environment == "people"):
-            robot.sendMessageRescueBase(Coord(x-1,y-1))
+            for j in range(len(stack)-1,-1,-1):
+                if(stack[j] == 'e'):
+                    caminosafe.append('W')
+                elif(stack[j] == 'o'):
+                    caminosafe.append('E')
+                elif(stack[j] == 's'):
+                    caminosafe.append('N')
+                elif(stack[j] == 'n'):
+                    caminosafe.append('S')
+            robot.sendMessageRescueBase(Coord(x-1,y-1),caminosafe)
         elif(environment == "safe"):
             safe.append([y-1,x-1])
 
